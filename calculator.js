@@ -4,7 +4,16 @@
 // perform operation
 //display result of the operation
 
+const MESSAGES = require('./calcmess.json');
+
 const readline = require('readline-sync');
+
+const LANGUAGE = 'en';
+
+// message arguemnt is a key in json package
+function messages(message, lang = 'en') {
+  return MESSAGES[lang][message];
+}
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
@@ -14,7 +23,7 @@ function invalidNumber(num) {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 }
 
-prompt('Welcome to the Calculator');
+prompt(MESSAGES['welcome']);
 
 while (true) {
   prompt('What is the first number?');
